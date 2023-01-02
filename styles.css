@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.painel-jogo {
+  width: 640px;
+  height: 360px;
+  border: 1px solid;
+}
+
+.player {
+  border: 1px solid red;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
