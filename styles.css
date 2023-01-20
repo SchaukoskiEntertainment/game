@@ -5,14 +5,40 @@
 }
 
 .painel-jogo {
-  width: 640px;
-  height: 360px;
+  width: 1000px;
+  height: 500px;
   border: 1px solid;
+  overflow: hidden;
 }
 
 .player {
-  border: 1px solid red;
-  width: 20px;
-  height: 20px;
   position: absolute;
+}
+
+#room {
+  border: 1px solid chocolate;
+  margin: auto;
+  position: relative;
+}
+
+.tile {
+  position: relative;
+}
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none; 
+}
+
+@keyframes animacaoAvatar {
+  from {
+    background-position: 0px;
+  }
+
+  to {
+    background-position: -152px;
+  }
 }
