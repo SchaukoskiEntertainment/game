@@ -724,23 +724,33 @@ export default function Room({roomX, roomY}) {
         vaiParaOTile(jogador, array[0], array)
     }
 
+    const changeColor = (color) => {
+        setJogadores(prev => prev.map(p => p.id === eu.id ? {...p, pantsColor: color } : p))
+    }
+
     return (
-        <div id="room" style={{left: roomX, top: roomY}} onMouseMove={(e) => selecionaTile(e)}>
-            {
-                tiles.map((tileY) => (
-                    tileY.map((tile) => (
-                        <div onClick={(e) => clicouNoTile(e)} key={tile.id} className="tile" style={{left: tile.x, top: tile.y}}>
-                            <div id={tile.id} style={{position: "absolute", backgroundImage: `url(assets/tile-down.png)`, backgroundRepeat: "no-repeat", width:55, height:41 }} alt="tile"></div>
-                        </div>
+        <>
+            <div id="room" style={{left: roomX, top: roomY}} onMouseMove={(e) => selecionaTile(e)}>
+                {
+                    tiles.map((tileY) => (
+                        tileY.map((tile) => (
+                            <div onClick={(e) => clicouNoTile(e)} key={tile.id} className="tile" style={{left: tile.x, top: tile.y}}>
+                                <div id={tile.id} style={{position: "absolute", backgroundImage: `url(assets/tile-down.png)`, backgroundRepeat: "no-repeat", width:55, height:41 }} alt="tile"></div>
+                            </div>
+                        ))
                     ))
-                ))
-            }
-            <Image id='hoverTile' style={{visibility: hoverTileCoord.visible ? "visible" : "hidden", left: hoverTileCoord.x, top: hoverTileCoord.y, position: "absolute", display: "block", pointerEvents: "none"}} alt="hover-tile" src={tileHover} unoptimized priority />
-            {
-                jogadores.map(p => (
-                    <Jogador key={p.id} jogador={p} eu_id={eu.id} />
-                ))
-            }
-        </div>
+                }
+                <Image id='hoverTile' style={{visibility: hoverTileCoord.visible ? "visible" : "hidden", left: hoverTileCoord.x, top: hoverTileCoord.y, position: "absolute", display: "block", pointerEvents: "none"}} alt="hover-tile" src={tileHover} unoptimized priority />
+                {
+                    jogadores.map(p => (
+                        <Jogador key={p.id} jogador={p} eu_id={eu.id} />
+                    ))
+                }
+            </div>
+            <div className="footer">
+                <div className="pantsColorRed" onClick={() => changeColor("red")}></div>
+                <div className="pantsColorGreen" onClick={() => changeColor("green")}></div>
+            </div>
+        </>
     )
 }
