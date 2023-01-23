@@ -64,12 +64,12 @@ img {
     background: #a577a1;
     width: 46px;
     height: 46px;
-    background-image: url(/_next/static/media/shirt-icon.dac6f169.png);
+    background-image: url(/assets/shirt-icon.png);
     border: 1px solid;
 }
 
 .changeClothes:hover {
     background: #fff;
-    background-image: url(/_next/static/media/shirt-icon.dac6f169.png);
+    background-image: url(/assets/shirt-icon.png);
     cursor: pointer;
 }
