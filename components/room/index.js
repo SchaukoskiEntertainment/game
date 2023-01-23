@@ -14,8 +14,8 @@ export default function Room({roomX, roomY}) {
     const [result, setResult] = useState(null);
     let lastUpdate = Date.now()
     const [eu, setEu] = useState({})
-    var offsetXPersonagem = 10
-    var offsetYPersonagem = -33
+    var offsetXPersonagem = -3
+    var offsetYPersonagem = -60
     var playerSpeed = 160 / 2
     var jogadorVelocidadeBaixoCima = 80 / 2
     var jogadorVelocidadeOnly = 160 / 2
@@ -230,7 +230,7 @@ export default function Room({roomX, roomY}) {
 
                     if(direita && baixo) {
                         fim = true
-                        jogador.currentAnimation = "idle-right"
+                        //jogador.currentAnimation = "idle-right"
                     } else {
                         jogador.currentAnimation = "walking-right"
                     }
@@ -271,7 +271,7 @@ export default function Room({roomX, roomY}) {
 
                     if(esquerda && baixo) {
                         fim = true
-                        jogador.currentAnimation = "idle-left"
+                        //jogador.currentAnimation = "idle-left"
                     } else {
                         jogador.currentAnimation = "walking-left"
                     }
@@ -394,6 +394,11 @@ export default function Room({roomX, roomY}) {
                     if (jogador.vaiPara.length != 0) {
                         vaiParaOTile(jogador, jogador.vaiPara[0], jogador.vaiPara)
                     } else {
+                        if (jogador.currentAnimation == "walking-left") {
+                            jogador.currentAnimation = "idle-left"
+                        } else {
+                             jogador.currentAnimation = "idle-right"
+                        }
                         setJogadores(prev => {
                             prev = prev.map(p => p.id === jogador.id ? {...p, vaiPara: [], podeMovimentar: false, removeAnimation: true} : p)
                             todosJogadores.current = prev
@@ -724,10 +729,6 @@ export default function Room({roomX, roomY}) {
         vaiParaOTile(jogador, array[0], array)
     }
 
-    const changeColor = (color) => {
-        setJogadores(prev => prev.map(p => p.id === eu.id ? {...p, pantsColor: color } : p))
-    }
-
     return (
         <>
             <div id="room" style={{left: roomX, top: roomY}} onMouseMove={(e) => selecionaTile(e)}>
@@ -748,8 +749,7 @@ export default function Room({roomX, roomY}) {
                 }
             </div>
             <div className="footer">
-                <div className="pantsColorRed" onClick={() => changeColor("red")}></div>
-                <div className="pantsColorGreen" onClick={() => changeColor("green")}></div>
+                <div className="changeClothes"></div>
             </div>
         </>
     )
