@@ -736,7 +736,7 @@ export default function Room({roomX, roomY}) {
                     tiles.map((tileY) => (
                         tileY.map((tile) => (
                             <div onClick={(e) => clicouNoTile(e)} key={tile.id} className="tile" style={{left: tile.x, top: tile.y}}>
-                                <div id={tile.id} style={{position: "absolute", backgroundImage: `url(assets/tile-down.png)`, imageRendering: "pixelated", backgroundRepeat: "no-repeat", width:55, height:41 }} alt="tile"></div>
+                                <div id={tile.id} style={{position: "absolute", backgroundImage: `url(assets/tile-down.png)`, backgroundRepeat: "no-repeat", width:55, height:41 }} alt="tile"></div>
                             </div>
                         ))
                     ))

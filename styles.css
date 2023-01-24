@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  image-rendering: pixelated;
+  image-rendering: auto;
 }
 
 html, body, #__next {
@@ -67,12 +67,10 @@ img {
     height: 46px;
     background-image: url(/assets/shirt-icon.png);
     border: 1px solid;
-    image-rendering: pixelated;
 }
 
 .changeClothes:hover {
     background: #fff;
     background-image: url(/assets/shirt-icon.png);
     cursor: pointer;
-    image-rendering: pixelated;
 }

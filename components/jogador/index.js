@@ -22,10 +22,10 @@ export default function Jogador({ jogador, eu_id }) {
     return (
         <div style={Object.assign(eu_id == jogador.id ? euStyle : outroJogadorStyle)} >
             <div style={{ display: currentAnimation == "idle-right" || currentAnimation == "idle-left" ? "block" : "none" }}>
-                <div style={{ transform: currentAnimation == "idle-right" ? "scaleX(1)" : "scaleX(-1)", position: "absolute", backgroundImage: `url(assets/new-body.png)`, imageRendering: "pixelated", backgroundRepeat: "no-repeat", width: 62, height: 87, left: jogador.x, top: jogador.y }}></div>
+                <div style={{ transform: currentAnimation == "idle-right" ? "scaleX(1)" : "scaleX(-1)", position: "absolute", backgroundImage: `url(assets/new-body.png)`, backgroundRepeat: "no-repeat", width: 62, height: 87, left: jogador.x, top: jogador.y }}></div>
             </div>
             <div style={{ display: currentAnimation == "walking-right" || currentAnimation == "walking-left" ? "block" : "none" }}>
-                <div style={{ transform: currentAnimation == "walking-right" ? "scaleX(1)" : "scaleX(-1)", animation: "animacaoAvatar 0.4s steps(5) infinite", position: "absolute", backgroundImage: `url(assets/new-body-walking.png)`, imageRendering: "pixelated", backgroundRepeat: "no-repeat", width: 62, height: 87, left: jogador.x, top: jogador.y }}></div>
+                <div style={{ transform: currentAnimation == "walking-right" ? "scaleX(1)" : "scaleX(-1)", animation: "animacaoAvatar 0.4s steps(5) infinite", position: "absolute", backgroundImage: `url(assets/new-body-walking.png)`, backgroundRepeat: "no-repeat", width: 62, height: 87, left: jogador.x, top: jogador.y }}></div>
             </div>
         </div>
     )
