@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  background: #bdbde3;
+}
+
+.linha {
+	height: 50%;
+}
+
+.mainLogin {
+  display: grid;
+}
+
+.input {
+  width: 100%;
+  border-radius: 15px;
+  padding: 0 5px;
+  border: 1px solid black;
+}
+
+.entrarBtn {
+  margin-top: 5px;
+}

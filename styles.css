@@ -4,12 +4,27 @@
   box-sizing: border-box;
 }
 
-html, body, #__next {
+@font-face {
+  font-family: 'Rocher';
+  src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
+}
+
+html, body, #__next, .container, .row, .main, .content {
   height: 100%;
+}
+
+.row {
+  width: 100%;
+}
+
+.row-cabecalho {
+  align-items: center;
 }
 
 body {
   overscroll-behavior: contain;
+  background-image: url(/assets/background.png);
+  font-family: sans-serif;
 }
 
 .painel-jogo {
@@ -61,15 +76,155 @@ img {
 }
 
 .changeClothes {
-    background: #a577a1;
     width: 46px;
     height: 46px;
     background-image: url(/assets/shirt-icon.png);
-    border: 1px solid;
 }
 
 .changeClothes:hover {
-    background: #fff;
     background-image: url(/assets/shirt-icon.png);
     cursor: pointer;
+}
+
+.abrir-login-icon {
+    width: 46px;
+    height: 46px;
+    background: white;
+}
+
+.abrir-login-icon:hover {
+    background: red;
+    cursor: pointer;
+}
+
+.borda-canto {
+  border: 5px solid;
+}
+
+.borda-cima {
+  border: 5px solid;
+}
+
+.borda-cima-container {
+  display: grid;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.cabecalho {
+  width: 100%;
+  background: white;
+  align-items: center;
+  display: flex;
+}
+
+h1 a {
+  text-decoration: none;
+  color: black;
+}
+
+.row-container {
+  padding: 0;
+  display: flex;
+}
+
+.cabecalho-container {
+  height: 120px;
+}
+
+header, main, footer {
+  border-left: 10px solid;
+  border-right: 10px solid;
+  background: white;
+  padding: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.logo {
+  font-palette: --Grays;
+  font-family: 'Rocher';
+}
+
+menu .row {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-right: 10px solid;
+  border-left: 10px solid;
+  background: white;
+  display: flex;
+  height: 100%;
+}
+
+menu .row div {
+  display: inline-block;
+  padding: 5px 25px;
+  font-weight: bold;
+}
+
+menu .row div a {
+  text-decoration: none;
+  color: black;
+}
+
+.button-3d {
+  position:relative;
+  width: auto;
+  color:#ecf0f1;
+  text-decoration:none;
+  border-radius:5px;
+  border:solid 1px #f39c12;
+  background:#e67e22;
+  text-align:center;
+  padding:16px 18px 14px;
+
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  transition: all 0.1s;
+
+  -webkit-box-shadow: 0px 10px 0px #d35400;
+  -moz-box-shadow: 0px 10px 0px #d35400;
+  box-shadow: 0px 10px 0px #d35400;
+}
+
+.button-3d:active{
+  -webkit-box-shadow: 0px 2px 0px #d35400;
+  -moz-box-shadow: 0px 2px 0px #d35400;
+  box-shadow: 0px 2px 0px #d35400;
+  position:relative;
+  top:4px;
+}
+
+.button-3d-color-green {
+  background:#26b151;
+  border:solid 1px #484747;
+  -webkit-box-shadow: 0px 10px 0px #196025;
+  -moz-box-shadow: 0px 10px 0px #196025;
+  box-shadow: 0px 10px 0px #196025;
+}
+
+.button-3d-color-green:active{
+  -webkit-box-shadow: 0px 2px 0px #196025;
+  -moz-box-shadow: 0px 2px 0px #196025;
+  box-shadow: 0px 2px 0px #196025;
+  position:relative;
+  top:4px;
+}
+
+.janela-login {
+  position: absolute;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+  background-size: 100%;
 }

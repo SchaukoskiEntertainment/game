@@ -230,7 +230,6 @@ export default function Room({roomX, roomY}) {
 
                     if(direita && baixo) {
                         fim = true
-                        //jogador.currentAnimation = "idle-right"
                     } else {
                         jogador.currentAnimation = "walking-right"
                     }
@@ -248,6 +247,8 @@ export default function Room({roomX, roomY}) {
 
                     if(baixo) {
                         fim = true
+                    } else {
+                        jogador.currentAnimation = "walking-front"
                     }
                 }
 
@@ -271,7 +272,6 @@ export default function Room({roomX, roomY}) {
 
                     if(esquerda && baixo) {
                         fim = true
-                        //jogador.currentAnimation = "idle-left"
                     } else {
                         jogador.currentAnimation = "walking-left"
                     }
@@ -290,6 +290,8 @@ export default function Room({roomX, roomY}) {
 
                     if(esquerda) {
                         fim = true
+                    } else {
+                        jogador.currentAnimation = "walking-left-only"
                     }
                 }
 
@@ -312,6 +314,8 @@ export default function Room({roomX, roomY}) {
 
                     if(esquerda && cima) {
                         fim = true
+                    } else {
+                        jogador.currentAnimation = "walking-left-up"
                     }
                 }
 
@@ -326,6 +330,8 @@ export default function Room({roomX, roomY}) {
 
                     if(cima) {
                         fim = true
+                    } else {
+                        jogador.currentAnimation = "walking-back"
                     }
                 }
 
@@ -348,6 +354,8 @@ export default function Room({roomX, roomY}) {
 
                     if(direita && cima) {
                         fim = true
+                    } else {
+                        jogador.currentAnimation = "walking-right-up"
                     }
                 }
 
@@ -363,6 +371,8 @@ export default function Room({roomX, roomY}) {
 
                     if(direita) {
                         fim = true
+                    } else {
+                        jogador.currentAnimation = "walking-right-only"
                     }
                 }
 
@@ -396,8 +406,20 @@ export default function Room({roomX, roomY}) {
                     } else {
                         if (jogador.currentAnimation == "walking-left") {
                             jogador.currentAnimation = "idle-left"
-                        } else {
+                        } else if (jogador.currentAnimation == "walking-right") {
                              jogador.currentAnimation = "idle-right"
+                        } else if (jogador.currentAnimation == "walking-right-up") {
+                             jogador.currentAnimation = "idle-right-up"
+                        } else if (jogador.currentAnimation == "walking-left-up") {
+                             jogador.currentAnimation = "idle-left-up"
+                        } else if (jogador.currentAnimation == "walking-back") {
+                             jogador.currentAnimation = "idle-back"
+                        } else if (jogador.currentAnimation == "walking-front") {
+                             jogador.currentAnimation = "idle-front"
+                        } else if (jogador.currentAnimation == "walking-right-only") {
+                             jogador.currentAnimation = "idle-right-only"
+                        } else if (jogador.currentAnimation == "walking-left-only") {
+                             jogador.currentAnimation = "idle-left-only"
                         }
                         setJogadores(prev => {
                             prev = prev.map(p => p.id === jogador.id ? {...p, vaiPara: [], podeMovimentar: false, removeAnimation: true} : p)
@@ -617,16 +639,6 @@ export default function Room({roomX, roomY}) {
         }
     }
 
-    const mostrarOutrosJogadores = async (presenceChannel) => {
-        presenceChannel.members.each(function (member) {
-            var jogador = member.info.player
-            // Se não for eu
-            if (presenceChannel.members.me.id != member.id) {
-                adicionarJogador(jogador)
-            }
-        });
-    }
-
     const tileCoordToXY = (tileCoord) => {
         return {x: allTiles[tileCoord.x][tileCoord.y].x, y: allTiles[tileCoord.x][tileCoord.y].y}
     }
@@ -635,7 +647,7 @@ export default function Room({roomX, roomY}) {
         return {x: tiles[tileCoord.x][tileCoord.y].x, y: tiles[tileCoord.x][tileCoord.y].y}
     }
 
-    const adicionarJogador = async (jogador) => {
+    const adicionarJogador = (jogador) => {
         let XY = tileCoordToXY(jogador.tileCoord)
         jogador.x = parseInt(XY.x) + offsetXPersonagem
         jogador.y = parseInt(XY.y) + offsetYPersonagem
@@ -668,7 +680,7 @@ export default function Room({roomX, roomY}) {
         return arr;
     }
 
-    const removerJogador = async (jogador) => {
+    const removerJogador = (jogador) => {
         setJogadores(prev => prev.filter(p => p.id !== jogador.id));
     }
 
@@ -747,9 +759,6 @@ export default function Room({roomX, roomY}) {
                         <Jogador key={p.id} jogador={p} eu_id={eu.id} />
                     ))
                 }
-            </div>
-            <div className="footer">
-                <div className="changeClothes"></div>
             </div>
         </>
     )
